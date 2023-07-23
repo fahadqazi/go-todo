@@ -75,4 +75,12 @@ func TestTodoCLI(t *testing.T) {
 			t.Fatal(err)
 		}
 	})
+
+	t.Run("Default", func(t *testing.T) {
+		cmd := exec.Command(cmdPath)
+
+		if err := cmd.Run(); err == nil {
+			t.Errorf("expected error %q but got %q", err, "exit status 1")
+		}
+	})
 }
