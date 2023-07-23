@@ -21,9 +21,9 @@ func (l *List) String() string {
 	formatted := ""
 
 	for k, t := range *l {
-		postFix := " "
+		postFix := ""
 		if t.Done {
-			postFix = " X"
+			postFix = " ✔︎"
 		}
 
 		formatted += fmt.Sprintf("%d: %s%s\n", k+1, t.Task, postFix)
