@@ -10,13 +10,9 @@ import (
 	"strings"
 )
 
-var todoFileName = ".todo.json"
+const todoFileName = ".todo.json"
 
 func main() {
-	if os.Getenv("TODO_FILENAME") != "" {
-		todoFileName = os.Getenv("TODO_FILENAME")
-	}
-
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(),
 			"Todo List\n")
