@@ -17,6 +17,20 @@ type item struct {
 
 type List []item
 
+func (l *List) String() string {
+	formatted := ""
+
+	for k, t := range *l {
+		postFix := " "
+		if t.Done {
+			postFix = " X"
+		}
+
+		formatted += fmt.Sprintf("%d: %s%s\n", k+1, t.Task, postFix)
+	}
+	return formatted
+}
+
 func (l *List) Add(task string) {
 	t := item{
 		Task:        task,
