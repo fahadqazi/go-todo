@@ -71,6 +71,12 @@ func (l *List) Delete(i int) error {
 	return nil
 }
 
+func (l *List) Clear() {
+	ls := *l
+	ls = nil
+	*l = ls
+}
+
 func (l *List) Save(filename string) error {
 	js, err := json.Marshal(l)
 	if err != nil {

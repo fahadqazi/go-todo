@@ -24,6 +24,7 @@ func main() {
 	list := flag.Bool("list", false, "List all tasks")
 	complete := flag.Int("complete", 0, "Items to complete")
 	delete := flag.Int("delete", 0, "Delete task")
+	clear := flag.Bool("clear", false, "Clear list")
 
 	flag.Parse()
 
@@ -66,6 +67,14 @@ func main() {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}
+
+		if err := l.Save(todoFileName); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+
+	case *clear:
+		l.Clear()
 
 		if err := l.Save(todoFileName); err != nil {
 			fmt.Fprintln(os.Stderr, err)
