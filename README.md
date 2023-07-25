@@ -14,10 +14,10 @@ go install
 go build cmd/todo/main.go
 ```
 
-![Help]('../assets/help.png')
+![Help]('https://github.com/fahadqazi/go-todo/blob/master/assets/help.png')
 
-![Add and delete]('../assets/add-delete.png')
+![Add and delete]('https://github.com/fahadqazi/go-todo/blob/master/assets/add-delete.png')
 
-![Clear All]('../assets/clear-all.png')
+![Clear All]('https://github.com/fahadqazi/go-todo/blob/master/assets/clear-all.png')
 
-![Tests]('../assets/tests.png')
+![Tests]('https://github.com/fahadqazi/go-todo/blob/master/assets/tests.png')
