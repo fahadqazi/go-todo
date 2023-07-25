@@ -14,14 +14,7 @@ go install
 go build cmd/todo/main.go
 ```
 
-### Run
-
-#### Help
-
-```bash
-./main -h
-```
-
-[help menu]('./assets/pic.png')
-
-[Demo]("./assets/video.mov")
+[Help]('../assets/help.png')
+[Add and delete]('../assets/add-delete.png')
+[Clear All]('../assets/clear-all.png')
+[Tests]('../assets/tests.png')
