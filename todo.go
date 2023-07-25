@@ -24,7 +24,7 @@ func (l *List) String() string {
 	todoColor := color.New(color.FgGreen).Add(color.Bold)
 
 	for k, t := range *l {
-		formattedTime := fmt.Sprintf(t.CreatedAt.Format("Mon Jan 2 15:04:05 MST 2006"))
+		formattedTime := fmt.Sprintf(t.CreatedAt.Format("Mon Jan 2 15:04:05"))
 		postFix := ""
 		if t.Done {
 			postFix = " ✔︎"
