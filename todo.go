@@ -21,7 +21,7 @@ type List []item
 func (l *List) String() string {
 	headerColor := color.New(color.FgCyan).Add(color.Underline)
 	header := headerColor.Sprintf("%s", "TODO APP")
-	formatted := fmt.Sprintf("----- %s -----\n", header)
+	formatted := fmt.Sprintf("----- %s -----\n\n", header)
 	doneColor := color.New(color.FgRed).Add(color.CrossedOut).Add(color.Faint)
 	todoColor := color.New(color.FgGreen).Add(color.Bold)
 

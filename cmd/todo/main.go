@@ -20,11 +20,11 @@ func main() {
 		flag.PrintDefaults()
 	}
 
-	add := flag.Bool("add", false, "Task to be included in ToDo list")
+	add := flag.Bool("add", false, "Add task to list")
 	list := flag.Bool("list", false, "List all tasks")
-	complete := flag.Int("complete", 0, "Items to complete")
+	complete := flag.Int("complete", 0, "Complete task")
 	delete := flag.Int("delete", 0, "Delete task")
-	clear := flag.Bool("clear", false, "Clear list")
+	clear := flag.Bool("clear", false, "Clear all tasks")
 
 	flag.Parse()
 
