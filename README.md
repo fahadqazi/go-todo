@@ -1,6 +1,6 @@
 ## Basic TODO list app
 
-### How to run
+### Install
 
 - Clone the repo and install the dependencies
 
@@ -12,4 +12,12 @@ go install
 
 ```bash
 go build cmd/todo/main.go
+```
+
+### Run
+
+#### Help
+
+```bash
+./main -h
 ```
