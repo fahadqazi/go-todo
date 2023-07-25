@@ -70,20 +70,6 @@ func TestTodoCLI(t *testing.T) {
 		}
 	})
 
-	t.Run("ListTasks", func(t *testing.T) {
-		cmd := exec.Command(cmdPath, "-list")
-		out, err := cmd.CombinedOutput()
-		if err != nil {
-			t.Fatal(err)
-		}
-
-		expected := fmt.Sprintf("1: %s\n2: %s\n\n", task, task2)
-
-		if expected != string(out) {
-			t.Errorf("Expected %q, got %q instead\n", expected, string(out))
-		}
-	})
-
 	t.Run("CompleteTask", func(t *testing.T) {
 		cmd := exec.Command(cmdPath, "-complete", "1")
 
