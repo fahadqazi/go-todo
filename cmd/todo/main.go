@@ -20,10 +20,10 @@ func main() {
 		flag.PrintDefaults()
 	}
 
-	add := flag.Bool("add", false, "Add task to list")
 	list := flag.Bool("list", false, "List all tasks")
-	complete := flag.Int("complete", 0, "Complete task")
+	add := flag.Bool("add", false, "Add task to list")
 	delete := flag.Int("delete", 0, "Delete task")
+	complete := flag.Int("complete", 0, "Complete task")
 	clear := flag.Bool("clear", false, "Clear all tasks")
 
 	flag.Parse()
