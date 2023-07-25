@@ -14,7 +14,10 @@ go install
 go build cmd/todo/main.go
 ```
 
-[Help]('../assets/help.png')
-[Add and delete]('../assets/add-delete.png')
-[Clear All]('../assets/clear-all.png')
-[Tests]('../assets/tests.png')
+![Help]('../assets/help.png')
+
+![Add and delete]('../assets/add-delete.png')
+
+![Clear All]('../assets/clear-all.png')
+
+![Tests]('../assets/tests.png')
