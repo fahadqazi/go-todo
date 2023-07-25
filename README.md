@@ -21,3 +21,7 @@ go build cmd/todo/main.go
 ```bash
 ./main -h
 ```
+
+[help menu]('./assets/pic.png')
+
+[Demo]("./assets/video.mov")
