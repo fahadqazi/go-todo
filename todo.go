@@ -19,7 +19,9 @@ type item struct {
 type List []item
 
 func (l *List) String() string {
-	formatted := ""
+	headerColor := color.New(color.FgCyan).Add(color.Underline)
+	header := headerColor.Sprintf("%s", "TODO APP")
+	formatted := fmt.Sprintf("----- %s -----\n", header)
 	doneColor := color.New(color.FgRed).Add(color.CrossedOut).Add(color.Faint)
 	todoColor := color.New(color.FgGreen).Add(color.Bold)
 
