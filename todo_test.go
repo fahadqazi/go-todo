@@ -2,6 +2,7 @@ package todo_test
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"testing"
 
@@ -40,7 +41,7 @@ func TestComplete(t *testing.T) {
 	comparisonOne := greaterThanLen.Error() == fmt.Errorf("item 5 does not exist").Error()
 
 	if !comparisonOne {
-		t.Errorf("Failed")
+		t.Errorf("Did not return correct error message")
 	}
 
 	lessThanOne := l.Complete(-1)
@@ -48,7 +49,7 @@ func TestComplete(t *testing.T) {
 	comparisonTwo := lessThanOne.Error() == fmt.Errorf("item -1 does not exist").Error()
 
 	if !comparisonTwo {
-		t.Errorf("Failed")
+		t.Errorf("Did not return correct error message")
 	}
 }
 
@@ -84,7 +85,7 @@ func TestDelete(t *testing.T) {
 	comparisonOne := greaterThanLen.Error() == fmt.Errorf("item 5 does not exist").Error()
 
 	if !comparisonOne {
-		t.Errorf("Failed")
+		t.Errorf("Did not return correct error message")
 	}
 
 	lessThanOne := l.Delete(-1)
@@ -92,7 +93,7 @@ func TestDelete(t *testing.T) {
 	comparisonTwo := lessThanOne.Error() == fmt.Errorf("item -1 does not exist").Error()
 
 	if !comparisonTwo {
-		t.Errorf("Failed")
+		t.Errorf("Did not return correct error message")
 	}
 }
 
@@ -124,4 +125,21 @@ func TestSaveGet(t *testing.T) {
 	if l1[0].Task != l2[0].Task {
 		t.Errorf("Task %q should match %q task", l1[0].Task, l2[0].Task)
 	}
+}
+
+func TestSave(t *testing.T) {
+	t.Run("Successful save", func(t *testing.T) {
+		list := &todo.List{}
+
+		tempFile, err := ioutil.TempFile("", "testlist.json")
+		if err != nil {
+			t.Fatalf("Failed to create temporary file: %v", err)
+		}
+		defer os.Remove(tempFile.Name())
+
+		err = list.Save(tempFile.Name())
+		if err != nil {
+			t.Errorf("Unexpected error: %v", err)
+		}
+	})
 }
