@@ -1,9 +1,11 @@
 package todo_test
 
 import (
-	"github.com/fahadqazi/golang/todo-app"
+	"fmt"
 	"os"
 	"testing"
+
+	"github.com/fahadqazi/golang/todo-app"
 )
 
 func TestAdd(t *testing.T) {
@@ -32,6 +34,22 @@ func TestComplete(t *testing.T) {
 	if !l[0].Done {
 		t.Errorf("New task should be completed")
 	}
+
+	greaterThanLen := l.Complete(5)
+
+	comparisonOne := greaterThanLen.Error() == fmt.Errorf("item 5 does not exist").Error()
+
+	if !comparisonOne {
+		t.Errorf("Failed")
+	}
+
+	lessThanOne := l.Complete(-1)
+
+	comparisonTwo := lessThanOne.Error() == fmt.Errorf("item -1 does not exist").Error()
+
+	if !comparisonTwo {
+		t.Errorf("Failed")
+	}
 }
 
 func TestDelete(t *testing.T) {
@@ -59,6 +77,22 @@ func TestDelete(t *testing.T) {
 
 	if l[1].Task != tasks[2] {
 		t.Errorf("Expected list length to be %q, but got %q", tasks[2], l[1].Task)
+	}
+
+	greaterThanLen := l.Delete(5)
+
+	comparisonOne := greaterThanLen.Error() == fmt.Errorf("item 5 does not exist").Error()
+
+	if !comparisonOne {
+		t.Errorf("Failed")
+	}
+
+	lessThanOne := l.Delete(-1)
+
+	comparisonTwo := lessThanOne.Error() == fmt.Errorf("item -1 does not exist").Error()
+
+	if !comparisonTwo {
+		t.Errorf("Failed")
 	}
 }
 
