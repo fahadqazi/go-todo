@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/fatih/color"
 	"os"
 	"time"
 )
@@ -19,25 +18,15 @@ type item struct {
 type List []item
 
 func (l *List) String() string {
-	headerColor := color.New(color.FgCyan).Add(color.Underline)
-	header := headerColor.Sprintf("%s", "TODO APP")
-	formatted := fmt.Sprintf("----- %s -----\n\n", header)
-	doneColor := color.New(color.FgRed).Add(color.CrossedOut).Add(color.Faint)
-	todoColor := color.New(color.FgGreen).Add(color.Bold)
-
+	formatted := ""
 	for k, t := range *l {
-		formattedTime := fmt.Sprintf(t.CreatedAt.Format("Mon Jan 2 15:04:05"))
 		postFix := ""
 		if t.Done {
-			postFix = " ✔︎"
-			t.Task = doneColor.Sprintf("%s%s", t.Task, postFix)
-		} else {
-			t.Task = todoColor.Sprintf("%s", t.Task)
+			postFix = "X"
 		}
 
-		formatted += fmt.Sprintf("%d: [%s] %s\n", k+1, formattedTime, t.Task)
+		formatted += fmt.Sprintf("%d: %s %s\n", k+1, t.Task, postFix)
 	}
-
 	return formatted
 }
 
