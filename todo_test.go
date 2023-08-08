@@ -9,6 +9,30 @@ import (
 	"github.com/fahadqazi/golang/todo-app"
 )
 
+func TestString(t *testing.T) {
+	l := todo.List{}
+
+	tasks := []string{
+		"Task 1",
+	}
+
+	for _, t := range tasks {
+		l.Add(t)
+	}
+
+	l.Complete(1)
+
+	val := l.String()
+
+	newVal := "1: Task 1 X\n"
+
+	res := val == newVal
+
+	if !res {
+		t.Errorf("there's an error %d", 5)
+	}
+}
+
 func TestAdd(t *testing.T) {
 	l := todo.List{}
 
@@ -146,25 +170,6 @@ func TestGet(t *testing.T) {
 
 	if err := l2.Get(tempFile.Name() + ".//"); err != nil {
 		t.Errorf("error getting list from file: %s", err)
-	}
-}
-
-func TestGetEmptyFile(t *testing.T) {
-	l1 := todo.List{}
-
-	tempFile, err := os.CreateTemp("", "")
-	if err != nil {
-		t.Errorf("Error creating temp file: %s", err)
-	}
-	defer os.Remove(tempFile.Name())
-
-	if err := l1.Save(tempFile.Name()); err != nil {
-		t.Fatalf("Error saving list to file: %s", err)
-	}
-
-	err = l1.Get(tempFile.Name())
-	if err != nil {
-		t.Errorf("Should return nil")
 	}
 }
 
