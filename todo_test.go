@@ -127,6 +127,47 @@ func TestSaveGet(t *testing.T) {
 	}
 }
 
+func TestGet(t *testing.T) {
+	l1 := todo.List{}
+	l2 := todo.List{}
+
+	taskName := "New task"
+	l1.Add(taskName)
+
+	tempFile, err := os.CreateTemp("", "")
+	if err != nil {
+		t.Errorf("Error creating temp file: %s", err)
+	}
+	defer os.Remove(tempFile.Name())
+
+	if err := l1.Save(tempFile.Name()); err != nil {
+		t.Fatalf("Error saving list to file: %s", err)
+	}
+
+	if err := l2.Get(tempFile.Name() + ".//"); err != nil {
+		t.Errorf("error getting list from file: %s", err)
+	}
+}
+
+func TestGetEmptyFile(t *testing.T) {
+	l1 := todo.List{}
+
+	tempFile, err := os.CreateTemp("", "")
+	if err != nil {
+		t.Errorf("Error creating temp file: %s", err)
+	}
+	defer os.Remove(tempFile.Name())
+
+	if err := l1.Save(tempFile.Name()); err != nil {
+		t.Fatalf("Error saving list to file: %s", err)
+	}
+
+	err = l1.Get(tempFile.Name())
+	if err != nil {
+		t.Errorf("Should return nil")
+	}
+}
+
 func TestSave(t *testing.T) {
 	t.Run("Successful save", func(t *testing.T) {
 		list := &todo.List{}
@@ -142,4 +183,24 @@ func TestSave(t *testing.T) {
 			t.Errorf("Unexpected error: %v", err)
 		}
 	})
+}
+
+func TestClear(t *testing.T) {
+	l := todo.List{}
+
+	tasks := []string{
+		"Task 1",
+		"Task 2",
+		"Task 3",
+	}
+
+	for _, t := range tasks {
+		l.Add(t)
+	}
+
+	l.Clear()
+
+	if len(l) > 0 {
+		t.Errorf("Expected zero but got %q", len(l))
+	}
 }
