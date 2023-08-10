@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"github.com/fahadqazi/golang/todo-app"
 	"io"
 	"os"
 	"strings"
+
+	"github.com/fahadqazi/todo-app"
 )
 
 const todoFileName = ".todo.json"

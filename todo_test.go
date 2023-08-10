@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/fahadqazi/golang/todo-app"
+	"github.com/fahadqazi/todo-app"
 )
 
 func TestString(t *testing.T) {

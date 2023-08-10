@@ -1,3 +1,3 @@
-module github.com/fahadqazi/golang/todo-app
+module github.com/fahadqazi/todo-app
 
 go 1.20
