@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/fahadqazi/todo-app"
+	"github.com/fahadqazi/go-todo"
 )
 
 const todoFileName = ".todo.json"
