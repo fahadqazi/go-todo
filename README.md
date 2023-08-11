@@ -40,6 +40,12 @@ todo -list
 todo -delete <todo-id>
 ```
 
+- Mark todo as done
+
+```
+todo -complete <todo-id>
+```
+
 ### Help Menu
 
 ![help](https://github.com/fahadqazi/go-todo/assets/6405594/187b218e-1541-439b-8f51-8c21231b6a40)
